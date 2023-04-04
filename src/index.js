@@ -17,13 +17,13 @@ import NotFound from './Components/NotFound/NotFound'
 
 const routes = createBrowserRouter ([
   {
-    path:"",element :<Layout/>,children:[
+    path:"ecommerce",element :<Layout/>,children:[
       {index: true, element: <Home/> },
       {path:"login", element : <Login/>},
       {path:"register", element : <Register/>},
       {path:"cart", element : <Cart/>},
       {path:"products", element : <Products/>},
-      {path:"*", element : <Home/>},
+      {path:"*", element : <NotFound/>},
     ],
   },
 ]);
