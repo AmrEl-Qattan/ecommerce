@@ -5,6 +5,7 @@ import errorImg from '../../assets/images/error.svg'
 export default function NotFound() {
   return (
     <>
+    Go back again
     <div className="container">
       <div className='w-50 mx-auto my-5'>
       <img src={errorImg} alt="" />
