@@ -17,7 +17,7 @@ import NotFound from './Components/NotFound/NotFound'
 
 const routes = createBrowserRouter ([
   {
-    path:"ecommerce",element :<Layout/>,children:[
+    path:"/",element :<Layout/>,children:[
       {index: true, element: <Home/> },
       {path:"login", element : <Login/>},
       {path:"register", element : <Register/>},
