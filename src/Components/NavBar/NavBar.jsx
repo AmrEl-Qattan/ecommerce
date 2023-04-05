@@ -3,7 +3,7 @@ import styles from './NavBar.module.css'
 import logo from '../../assets/images/logo.svg'
 import { Link } from 'react-router-dom'
 
-export default function NavBar() {
+export default function NavBar({userData ,logOut}) {
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -15,7 +15,8 @@ export default function NavBar() {
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+      {userData && <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
           <Link className='nav-link' to={''}>Home</Link>
         </li>
@@ -27,7 +28,8 @@ export default function NavBar() {
         </li>
         
       </ul>
-
+ }
+      
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
         <li className=''>
         <i className="fa-brands fa-facebook text-white"></i>
@@ -45,16 +47,20 @@ export default function NavBar() {
       </ul>
 
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        {userData ? <li className="nav-item">
+          <span className="nav-link cursor-pointer" onClick={logOut}>LogOut</span>
+        </li> :    <>
         <li className="nav-item">
           <Link className='nav-link' to='login'>Login</Link>
         </li>
         <li className="nav-item">
           <Link className='nav-link' to='register'>Register</Link>
         </li>
-        <li className="nav-item">
-          <Link className='nav-link' to='logout'>LogOut</Link>
-        </li>
         
+        </> }
+        
+    
       </ul>
     
     </div>

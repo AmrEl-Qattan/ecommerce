@@ -100,7 +100,7 @@ phone:Yup.string().required('Phone is required').matches(/^01[0125][0-9]{8}$/ , 
         />
         {formik.errors.phone && formik.touched.phone ?<div className="alert alert-danger">{formik.errors.phone}</div> : '' }
 
-          {isLoading ? <button className="btn bg-main text-white"><i className='fa fa-spin fa-spinner'></i></button> :  <button className="btn bg-main text-white">Register</button>}
+          {isLoading ? <button className="btn bg-main text-white"><i className='fa fa-spin fa-spinner'></i></button> :  <button disabled={!(formik.isValid && formik.dirty)} className="btn bg-main text-white">Register</button>}
        
         
       </form>

@@ -1,29 +1,57 @@
 import logo from './logo.svg';
 import './App.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter,} from 'react-router-dom';
 import Layout from './Components/Layout/Layout'
 import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Register from './Components/Register/Register'
 import Cart from './Components/Cart/Cart'
 import Products from './Components/Products/Products'
+import ProductDetails from './Components/ProductDetails/ProductDetails'
 import NotFound from './Components/NotFound/NotFound'
+import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes'
+import {useEffect, useState} from 'react'
+import jwtDecode from 'jwt-decode';
+
+
+
+ function App() {
+
+
+  const [userData,setUserData] = useState(null)
+  useEffect(() =>{
+    if (localStorage.getItem("userToken")){
+      saveUser()
+    }
+
+  }, [])
+
+
+function saveUser(){
+  let encodedToken = localStorage.getItem("userToken")
+  let decoded = jwtDecode(encodedToken);
+  setUserData(decoded);
+  
+}
+
 
 const routes = createBrowserRouter ([
   {
-    path:"ecommerce",element :<Layout/>,children:[
-      {index: true, element: <Home/> },
-      {path:"home", element : <Home/>},
-      {path:"login", element : <Login/>},
+    path:"",element :<Layout userData={userData} setUserData= {setUserData}/>,children:[
+      {index: true, element: <ProtectedRoutes><Home/></ProtectedRoutes>},
+      {path:"home", element : <ProtectedRoutes><Home/></ProtectedRoutes>},
+      {path:"ecommerce", element : <ProtectedRoutes><Home/></ProtectedRoutes>},
+      {path:"login", element : <Login saveUser={saveUser}/>},
       {path:"register", element : <Register/>},
-      {path:"cart", element : <Cart/>},
-      {path:"products", element : <Products/>},
+      {path:"cart", element : <ProtectedRoutes><Cart/></ProtectedRoutes>},
+      {path:"productdetails/:id", element : <ProtectedRoutes><ProductDetails/></ProtectedRoutes>},
+      {path:"products", element :<ProtectedRoutes><Products/></ProtectedRoutes> },
       {path:"*", element : <NotFound/>},
     ],
   },
 ]);
 
- function App() {
+
   return <RouterProvider router={routes}></RouterProvider>
    
   

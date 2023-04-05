@@ -5,7 +5,8 @@ import { Formik, useFormik } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() { const [isLoading,setIsLoading] = useState(false)
+export default function Login({saveUser})
+ { const [isLoading,setIsLoading] = useState(false)
   const [errorMessage,setErrorMessage] = useState(null)
   let navigate = useNavigate()
 
@@ -21,6 +22,8 @@ async function login (values) {
 
   if (data.message == "success"){
     setIsLoading(false)
+    localStorage.setItem("userToken", data.token)
+    saveUser()
     navigate("/")
 
   }
