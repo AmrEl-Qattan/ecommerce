@@ -3,7 +3,8 @@ import styles from './Login.module.css'
 import * as Yup from 'yup'
 import { Formik, useFormik } from "formik";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Register from "../Register/Register";
 
 export default function Login({saveUser})
  { const [isLoading,setIsLoading] = useState(false)
@@ -70,7 +71,8 @@ password:Yup.string().required('password is required').matches(/^[A-Z][a-z0-9]{5
         {formik.errors.password && formik.touched.password ?<div className="alert alert-danger">{formik.errors.password}</div> : '' }
         
         
-          {isLoading ? <button className="btn bg-main text-white"><i className='fa fa-spin fa-spinner'></i></button> :  <button className="btn bg-main text-white">Register</button>}
+          {isLoading ? <button className="btn bg-main text-white "><i className='fa fa-spin fa-spinner'></i></button> :  <button className="btn bg-main text-white m-1">Login</button>}
+          {isLoading ? <button className="btn bg-main text-white"><i className='fa fa-spin fa-spinner'></i></button> :  <Link to='/register'><button className="btn bg-main text-white">Register</button></Link>}
        
         
       </form>

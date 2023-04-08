@@ -37,8 +37,9 @@ export default function FeatureProducts() {
           </div>
 
         </div>
-        <button className='btn bg-main text-white w-100'>+ Add</button>
+        
         </Link>
+        <button className='btn bg-main text-white w-100'>+ Add</button>
 
         </div>
       

@@ -6,6 +6,7 @@ import axios from 'axios'
 
 export default function Categories() {
   const[categories,setCategories]= useState([])
+  
 
   async function getCategories() {
    let {data} =  await axios.get('https://route-ecommerce.onrender.com/api/v1/categories')
@@ -27,7 +28,7 @@ export default function Categories() {
   return (
     <>
      <Slider {...settings}>
-      {categories.map((category)=><div key={category.id}>
+      {categories.map((category)=><div key={category._id}>
         <img height={300} width={'100%'} src={category.image} alt="" />
         <h3 className='h6'>{category.name}</h3>
       </div>)}
