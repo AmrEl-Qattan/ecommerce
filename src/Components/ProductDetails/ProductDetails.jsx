@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './ProductDetails.module.css'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import { useEffect } from 'react'
 import Slider from "react-slick";
+import { CartContext } from '../../Context/CartContext'
 
 
 
 export default function ProductDetails() {
+  let {creatCart} = useContext(CartContext)
   let {id} = useParams()
   const [productDetails, setproductDetails] = useState({});
   const [isLoading, setisLoading] = useState(false)
@@ -64,7 +66,7 @@ var settings = {
           </div>
 
         </div>
-        <button className='btn bg-main text-white w-100'>+ Add</button>
+        <button onClick={() => creatCart(productDetails._id)} className='btn bg-main text-white w-100'>+ Add</button>
 
 
       </div>

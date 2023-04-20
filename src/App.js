@@ -12,6 +12,9 @@ import NotFound from './Components/NotFound/NotFound'
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes'
 import {useEffect, useState} from 'react'
 import jwtDecode from 'jwt-decode';
+import CounterContextProvider from './Context/CounterContext';
+import CartContextProvider, { CartContext } from './Context/CartContext';
+import  { Toaster } from 'react-hot-toast';
 
 
 
@@ -52,7 +55,16 @@ const routes = createBrowserRouter ([
 ]);
 
 
-  return <RouterProvider router={routes}></RouterProvider>
+  return ( 
+  <CartContextProvider>
+    <CounterContextProvider>
+       <Toaster></Toaster>
+      <RouterProvider router={routes}></RouterProvider>
+      </CounterContextProvider>
+      </CartContextProvider>
+  
+  );
+  
    
   
 }

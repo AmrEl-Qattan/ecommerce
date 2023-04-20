@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styles from './FeatureProducts.module.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../../Context/CartContext'
+import toast from 'react-hot-toast';
+
 
 export default function FeatureProducts() {
+
+  let {creatCart} = useContext(CartContext)
   const[allProducts,setAllProducts]= useState([])
 
   async function getProducts() {
@@ -11,6 +16,17 @@ export default function FeatureProducts() {
    setAllProducts(data.data)
   }
 
+ async function generateCart(productId){
+   let response = await creatCart(productId)
+   if(response.data.status == "success"){
+    toast.success(response.data.message, {
+      position:"bottom-right",
+      className: "text-center border-success border-2"
+    })
+
+   }
+
+  }
   useEffect(()=>{
     getProducts()
 
@@ -39,7 +55,7 @@ export default function FeatureProducts() {
         </div>
         
         </Link>
-        <button className='btn bg-main text-white w-100'>+ Add</button>
+        <button onClick={() => generateCart(product._id)} className='btn bg-main text-white w-100'>+ Add</button>
 
         </div>
       

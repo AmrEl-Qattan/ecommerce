@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './NavBar.module.css'
 import logo from '../../assets/images/logo.svg'
 import { Link } from 'react-router-dom'
+import {CounterContext} from '../../Context/CounterContext'
 
 export default function NavBar({userData ,logOut}) {
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
   <div className="container">
-    <Link className="navbar-brand " to='home'>
+    <Link className="navbar-brand " to=''>
       <img src={logo} alt="" />
     </Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
