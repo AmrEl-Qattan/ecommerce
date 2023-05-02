@@ -27,6 +27,9 @@ export default function NavBar({userData ,logOut}) {
         <li className="nav-item">
           <Link className='nav-link' to='cart'>Cart</Link>
         </li>
+        <li className="nav-item">
+          <Link className='nav-link' to='Contact'>Contact US</Link>
+        </li>
         
       </ul>
  }

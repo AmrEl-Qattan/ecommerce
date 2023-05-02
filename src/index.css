@@ -57,3 +57,54 @@ a , a:hover{
 {
     background-color: var(--light-color) !important;
 }
+
+
+.contact {
+    padding: 30px 0;
+ }
+ 
+ form.contact-area {
+    width: 70%;
+    margin: auto;
+ }
+ .contact .title{
+    text-align: center;
+ }
+ 
+ 
+ form.contact-area :is(input , textarea) {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #adadad;
+ }
+ 
+ form.contact-area :is(input, textarea):focus {
+    outline: none;
+ }
+ 
+ form.contact-area textarea {
+    resize: none;
+    height: 140px;
+ }
+ 
+ form.contact-area .data-form {
+    float: left;
+    width: 100%;
+    padding: 10px;
+ }
+ 
+ form.contact-area .data-form:nth-child(-n + 2) {
+    width: 50%;
+ }
+ 
+ form.contact-area button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: rgb(255, 48, 91);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: unset;
+ }

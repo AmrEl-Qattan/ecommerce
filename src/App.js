@@ -6,6 +6,7 @@ import Home from './Components/Home/Home'
 import Login from './Components/Login/Login'
 import Register from './Components/Register/Register'
 import Cart from './Components/Cart/Cart'
+import Contact from './Components/Contact/Contact'
 import Products from './Components/Products/Products'
 import ProductDetails from './Components/ProductDetails/ProductDetails'
 import NotFound from './Components/NotFound/NotFound'
@@ -49,6 +50,7 @@ const routes = createBrowserRouter ([
       {path:"cart", element : <ProtectedRoutes><Cart/></ProtectedRoutes>},
       {path:"productdetails/:id", element : <ProtectedRoutes><ProductDetails/></ProtectedRoutes>},
       {path:"products", element :<ProtectedRoutes><Products/></ProtectedRoutes> },
+      {path:"contact", element :<ProtectedRoutes><Contact/></ProtectedRoutes> },
       {path:"*", element : <NotFound/>},
     ],
   },

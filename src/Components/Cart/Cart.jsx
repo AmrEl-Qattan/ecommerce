@@ -7,7 +7,7 @@ import { CartContext } from '../../Context/CartContext'
 export default function Cart() {
   const [cartDetails, setCartDetails] = useState({})
 
-  let {getCart,updateCart} = useContext(CartContext)
+  let {getCart,updateCart,removeCartItem} = useContext(CartContext)
   
 
  async function getCartDetails(){
@@ -21,6 +21,12 @@ export default function Cart() {
  setCartDetails(res.data)
 
   }
+
+  async function deleteCartHandler(id){
+    let res =  await removeCartItem(id)
+    setCartDetails(res.data)
+   
+     }
 
   useEffect (() => {
     getCartDetails()
@@ -40,6 +46,8 @@ export default function Cart() {
           <div>
           <h4>{product.product.title}</h4>
           <p className='text-main'>{product.price} EGP</p>
+          <button onClick={ ()=> deleteCartHandler(product.product._id)} className='btn text-danger'> <i className='fa fa-trash'></i> Remove</button>
+
           </div>
           <div className='d-flex align-items-center'>
             <button className='btn btn-cart bg-main text-white' onClick={() =>updateCartHandler(product.product._id,product.count+1) }>+</button>

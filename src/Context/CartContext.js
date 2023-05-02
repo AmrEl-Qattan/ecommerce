@@ -43,10 +43,23 @@ export default function CartContextProvider(props) {
          ).then(res => res)
          .catch(err => err)
      }
+
+     function removeCartItem(id){
+        return axios.delete(`https://route-ecommerce.onrender.com/api/v1/cart/${id}`,
+         
+         {
+             headers,
+         }
+         
+         
+         ).then(res => res)
+         .catch(err => err)
+     }
+ 
  
 
     const [cart,setCart] = useState(0)
-    return <CartContext.Provider value={{cart, creatCart, getCart,updateCart}}>
+    return <CartContext.Provider value={{cart, creatCart, getCart,updateCart,removeCartItem}}>
         {props.children}
         </CartContext.Provider>
 }
