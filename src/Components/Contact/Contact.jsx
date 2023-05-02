@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import styles from './Contact.module.css'
+import toast from 'react-hot-toast'
 
 
 export default function Contact() {
@@ -12,6 +13,7 @@ export default function Contact() {
       emailjs.sendForm('service_xk19n3m', 'template_43c9mfa', form.current, 'BDCesUCrZJ4QlObj3')
         .then((result) => {
             console.log(result.text);
+            toast.success("Your Message Sent Successfuly !", {className:"mt-5 fw-bold "})
         }, (error) => {
             console.log(error.text);
         });
