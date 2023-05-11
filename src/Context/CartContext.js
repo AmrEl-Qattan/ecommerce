@@ -73,7 +73,7 @@ export default function CartContextProvider(props) {
      }
 
      function generateOnlinePayment(cartId,shippingAddress){
-        return axios.post(`https://route-ecommerce.onrender.com/api/v1/orders/checkout-session/${cartId}?url=https://amrel-qattan.github.io`,
+        return axios.post(`https://route-ecommerce.onrender.com/api/v1/orders/checkout-session/${cartId}?url=https://AmrEl-Qattan.github.io/ecommerce`,
         {shippingAddress:shippingAddress},
          
          {
