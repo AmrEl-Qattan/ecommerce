@@ -4,6 +4,8 @@ import * as Yup from 'yup'
 import { Formik, useFormik } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {Helmet} from "react-helmet";
+
 
 export default function Register() {
   const [isLoading,setIsLoading] = useState(false)
@@ -46,6 +48,13 @@ phone:Yup.string().required('Phone is required').matches(/^01[0125][0-9]{8}$/ , 
     onSubmit: (values) => register(values)
   });
   return (
+
+    <><Helmet>
+    <meta charSet="utf-8" />
+    <title>Register</title>
+    
+  </Helmet>
+
     <div className="container my-5">
       <h3>Register Now :</h3>
       {errorMessage ? <div className="alert alert-danger"> {errorMessage} </div> : ''}
@@ -105,5 +114,6 @@ phone:Yup.string().required('Phone is required').matches(/^01[0125][0-9]{8}$/ , 
         
       </form>
     </div>
+    </>
   );
 }

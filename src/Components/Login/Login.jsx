@@ -5,6 +5,8 @@ import { Formik, useFormik } from "formik";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Register from "../Register/Register";
+import {Helmet} from "react-helmet";
+
 
 export default function Login({saveUser})
  { const [isLoading,setIsLoading] = useState(false)
@@ -43,6 +45,13 @@ password:Yup.string().required('password is required').matches(/^[A-Z][a-z0-9]{5
     onSubmit: (values) => login(values)
   });
   return (
+
+    <>  <Helmet>
+    <meta charSet="utf-8" />
+    <title>Login</title>
+    
+  </Helmet>
+
     <div className="container my-5">
       <h3>Login Now :</h3>
       {errorMessage ? <div className="alert alert-danger"> {errorMessage} </div> : ''}
@@ -77,6 +86,7 @@ password:Yup.string().required('password is required').matches(/^[A-Z][a-z0-9]{5
         
       </form>
     </div>
+    </>
   );
 }
 

@@ -2,6 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import styles from './Cart.module.css'
 import { CounterContext } from '../../Context/CounterContext'
 import { CartContext } from '../../Context/CartContext'
+import { Offline, Online } from "react-detect-offline";
+import {Helmet} from "react-helmet";
+import { Link } from 'react-router-dom';
+
+
 
 
 export default function Cart() {
@@ -33,6 +38,15 @@ export default function Cart() {
   },[])
   return (
     <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Cart</title>
+                
+            </Helmet>
+
+
+    {/* <Online>Only shown when you're online</Online> */}
+    <Offline><span className='network_status'> Your are offline</span></Offline>
 
     { cartDetails && cartDetails.data && <div className="container py-5 my-5">
       <div className="bg-main-light p-5">
@@ -56,9 +70,10 @@ export default function Cart() {
 
           </div>
         </div>
-        
+
         
         </div>)}
+        <Link to={'/checkout'} className='btn bg-main text-white my-3'>procceed to payment</Link>
       </div>
     </div>}
     

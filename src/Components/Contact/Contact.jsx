@@ -2,6 +2,8 @@ import React, { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import styles from './Contact.module.css'
 import toast from 'react-hot-toast'
+import {Helmet} from "react-helmet";
+
 
 
 export default function Contact() {
@@ -24,6 +26,12 @@ export default function Contact() {
 
   return (
     <>
+
+<Helmet>
+                <meta charSet="utf-8" />
+                <title>Contact</title>
+                
+            </Helmet>
     {/* <section >
       <div classNameName="container ">
         <h2 classNameName='text-center'>Contact us </h2>

@@ -3,8 +3,11 @@ import styles from './NavBar.module.css'
 import logo from '../../assets/images/logo.svg'
 import { Link } from 'react-router-dom'
 import {CounterContext} from '../../Context/CounterContext'
+import { CartContext } from '../../Context/CartContext'
 
 export default function NavBar({userData ,logOut}) {
+
+  // let {numberOfCartItems} = useContext(CartContext)
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark">

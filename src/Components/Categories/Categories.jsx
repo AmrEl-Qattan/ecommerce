@@ -23,14 +23,14 @@ export default function Categories() {
     infinite: true,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 1
+    slidesToScroll: 6
   };
   return (
     <>
-     <Slider {...settings}>
+     <Slider className='slider'{...settings}>
       {categories.map((category)=><div key={category._id}>
         <img height={300} width={'100%'} src={category.image} alt="" />
-        <h3 className='h6'>{category.name}</h3>
+        <h3 className='h6 text-center'>{category.name}</h3>
       </div>)}
     </Slider>
     </>

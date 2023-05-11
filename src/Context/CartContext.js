@@ -1,10 +1,26 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 
 export let CartContext = createContext(0);
 
 export default function CartContextProvider(props) {
+
+    const [numberOfCartItems,setNumberOfCartItems] = useState()
+    const [cartId,setcartId] = useState(null)
+
+    useEffect(() => {
+        getInitalValuse()
+    },[])
+
+    async function getInitalValuse(){
+        let {data} = await getCart();
+        if(data.status == "success"){
+            setNumberOfCartItems(data.numberOfCartItems);
+            setcartId(data.data._id)
+        }
+
+    }
 
     let headers = {token: localStorage.getItem("userToken")}
 
@@ -55,11 +71,24 @@ export default function CartContextProvider(props) {
          ).then(res => res)
          .catch(err => err)
      }
+
+     function generateOnlinePayment(cartId,shippingAddress){
+        return axios.post(`https://route-ecommerce.onrender.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`,
+        {shippingAddress:shippingAddress},
+         
+         {
+             headers,
+         }
+         
+         
+         ).then(res => res)
+         .catch(err => err)
+     }
  
  
 
-    const [cart,setCart] = useState(0)
-    return <CartContext.Provider value={{cart, creatCart, getCart,updateCart,removeCartItem}}>
+    const [cart,setCart,] = useState(0)
+    return <CartContext.Provider value={{setNumberOfCartItems,numberOfCartItems,cartId,generateOnlinePayment,cart, creatCart, getCart,updateCart,removeCartItem}}>
         {props.children}
         </CartContext.Provider>
 }

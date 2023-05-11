@@ -108,3 +108,13 @@ a , a:hover{
     border-radius: 5px;
     border: unset;
  }
+ .slider{
+    width: 98%;
+}
+
+.network_status {
+    position: fixed;
+    right: 500px;
+    background-color: wheat;
+    color: var(--main-color);
+}
