@@ -53,7 +53,7 @@ const routes = createBrowserRouter ([
       {path:"productdetails/:id", element : <ProtectedRoutes><ProductDetails/></ProtectedRoutes>},
       {path:"products", element :<ProtectedRoutes><Products/></ProtectedRoutes> },
       {path:"contact", element :<ProtectedRoutes><Contact/></ProtectedRoutes> },
-      {path:"/allorders", element :<ProtectedRoutes><AllOrders/></ProtectedRoutes> },
+      {path:"allorders", element :<ProtectedRoutes><AllOrders/></ProtectedRoutes> },
       {path:"checkout", element :<ProtectedRoutes><Checkout/></ProtectedRoutes> },
       {path:"*", element : <NotFound/>},
     ],

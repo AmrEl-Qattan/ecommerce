@@ -25,7 +25,7 @@ export default function CartContextProvider(props) {
     let headers = {token: localStorage.getItem("userToken")}
 
     function creatCart(productId){
-       return axios.post(`https://route-ecommerce.onrender.com/api/v1/cart`, 
+       return axios.post(`https://route-ecommerce-app.vercel.app/api/v1/cart`, 
         { productId: productId},
         {
             headers,
@@ -37,7 +37,7 @@ export default function CartContextProvider(props) {
     }
 
     function getCart(){
-        return axios.get(`https://route-ecommerce.onrender.com/api/v1/cart`, 
+        return axios.get(`https://route-ecommerce-app.vercel.app/api/v1/cart`, 
          
          {
              headers,
@@ -49,7 +49,7 @@ export default function CartContextProvider(props) {
      }
  
     function updateCart(id,count){
-        return axios.put(`https://route-ecommerce.onrender.com/api/v1/cart/${id}`,{count}, 
+        return axios.put(`https://route-ecommerce-app.vercel.app/api/v1/cart/${id}`,{count}, 
          
          {
              headers,
@@ -61,7 +61,7 @@ export default function CartContextProvider(props) {
      }
 
      function removeCartItem(id){
-        return axios.delete(`https://route-ecommerce.onrender.com/api/v1/cart/${id}`,
+        return axios.delete(`https://route-ecommerce-app.vercel.app/api/v1/cart/${id}`,
          
          {
              headers,
@@ -73,7 +73,7 @@ export default function CartContextProvider(props) {
      }
 
      function generateOnlinePayment(cartId,shippingAddress){
-        return axios.post(`https://route-ecommerce.onrender.com/api/v1/orders/checkout-session/${cartId}?url=https://AmrEl-Qattan.github.io/ecommerce`,
+        return axios.post(`https://route-ecommerce-app.vercel.app/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`,
         {shippingAddress:shippingAddress},
          
          {
