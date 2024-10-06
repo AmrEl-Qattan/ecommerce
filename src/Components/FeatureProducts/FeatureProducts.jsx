@@ -4,16 +4,21 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../Context/CartContext'
 import toast from 'react-hot-toast';
+import { BallTriangle } from 'react-loader-spinner'
+
 
 
 export default function FeatureProducts() {
 
   let {creatCart} = useContext(CartContext)
   const[allProducts,setAllProducts]= useState([])
+  const [isLoading, setisLoading] = useState(false)
 
   async function getProducts() {
+    setisLoading(true);
    let {data} =  await axios.get('https://ecommerce.routemisr.com/api/v1/products')
-   setAllProducts(data.data)
+   setAllProducts(data.data);
+   setisLoading(false)
   }
 
  async function generateCart(productId){
@@ -37,9 +42,10 @@ export default function FeatureProducts() {
 
   return (
    <>
-   <div className="container mb-5 py-5">
+
+   {isLoading ? <div className='text-center'><i className='fas fa-spin fa-3x fa-spinner text-main'></i></div>: <div className="container mb-5 py-5">
     <div className="row">
-      {allProducts.map((product)=><div key={product.id} className="col-md 2">
+      {allProducts.map((product)=><div key={product.id} className="col-md-2">
         <div className="product px-2 py-3 cursor-pointer">
           <Link to={`/productdetails/${product._id}`}>
           <img src={product.imageCover} className='w-100' alt="" />
@@ -62,7 +68,8 @@ export default function FeatureProducts() {
     </div>)}
       
     </div>
-   </div>
+   </div>}
+  
    </>
   )
 }

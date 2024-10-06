@@ -8,6 +8,8 @@ import Register from './Components/Register/Register'
 import Cart from './Components/Cart/Cart'
 import Contact from './Components/Contact/Contact'
 import Products from './Components/Products/Products'
+import Brands from './Components/Brands/Brands'
+import BrandDetails from './Components/BrandDetails/BrandDetails'
 import ProductDetails from './Components/ProductDetails/ProductDetails'
 import NotFound from './Components/NotFound/NotFound'
 import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes'
@@ -52,6 +54,8 @@ const routes = createBrowserRouter ([
       {path:"cart", element : <ProtectedRoutes><Cart/></ProtectedRoutes>},
       {path:"productdetails/:id", element : <ProtectedRoutes><ProductDetails/></ProtectedRoutes>},
       {path:"products", element :<ProtectedRoutes><Products/></ProtectedRoutes> },
+      {path:"brands", element :<ProtectedRoutes><Brands/></ProtectedRoutes> },
+      {path:"branddetails/:id", element :<ProtectedRoutes><BrandDetails/></ProtectedRoutes> },
       {path:"contact", element :<ProtectedRoutes><Contact/></ProtectedRoutes> },
       {path:"allorders", element :<ProtectedRoutes><AllOrders/></ProtectedRoutes> },
       {path:"checkout", element :<ProtectedRoutes><Checkout/></ProtectedRoutes> },

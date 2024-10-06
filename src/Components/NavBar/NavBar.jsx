@@ -25,7 +25,7 @@ export default function NavBar({userData ,logOut}) {
           <Link className='nav-link' to={''}>Home</Link>
         </li>
         <li className="nav-item">
-          <Link className='nav-link' to='products'>Products</Link>
+          <Link className='nav-link' to='brands'>Brands</Link>
         </li>
         <li className="nav-item">
           <Link className='nav-link' to='cart'>Cart</Link>
@@ -35,25 +35,14 @@ export default function NavBar({userData ,logOut}) {
         </li>
         
       </ul>
- }
-      
-      <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li className=''>
-        <i className="fa-brands fa-facebook text-white"></i>
-          </li>
-      </ul>
-      <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li className=''>
-        <i className="fa-brands fa-twitter text-white"></i>
-          </li>
-      </ul>
-      <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li className=''>
-        <i className="fa-brands fa-instagram text-white"></i>
-          </li>
-      </ul>
+ }   
 
       <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+      <li className="nav-item d-flex align-items-center">
+        <i className="fa-brands fa-facebook mx-2 text-white cursor-pointer"></i>
+        <i className="fa-brands fa-twitter mx-2 text-white cursor-pointer"></i>             
+        <i className="fa-brands fa-instagram mx-2 text-white cursor-pointer"></i>
+        </li>
 
         {userData ? <li className="nav-item">
           <span className="nav-link cursor-pointer" onClick={logOut}>LogOut</span>

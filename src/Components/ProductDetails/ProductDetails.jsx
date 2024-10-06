@@ -6,6 +6,9 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import Slider from "react-slick";
 import { CartContext } from '../../Context/CartContext'
+import { Helmet } from 'react-helmet'
+import toast from 'react-hot-toast'
+
 
 
 
@@ -21,8 +24,16 @@ export default function ProductDetails() {
     let {data} = await axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
     setproductDetails(data.data);
     setisLoading(false);
+    
 
   }
+  
+  const handleAddToCart = () => {
+    creatCart(productDetails._id);
+    toast.success('Item Added to Cart', {
+      position: 'top-center',
+    });
+  };
 
 useEffect (()=> {
   getproductDetails(id.id);
@@ -43,7 +54,12 @@ var settings = {
       <div className="row justify-content-center py-3 align-items-center">
         {isLoading?
         <div className='text-center'><i className='fas fa-spin fa-3x fa-spinner text-main'></i></div>
+        
         :<>
+          <Helmet>
+                <meta charSet="utf-8" />
+                <title>{productDetails.title}</title>                
+              </Helmet>
         
         <div className="col-md-4">
       <Slider {...settings}>
@@ -66,7 +82,7 @@ var settings = {
           </div>
 
         </div>
-        <button onClick={() => creatCart(productDetails._id)} className='btn bg-main text-white w-100'>+ Add</button>
+        <button onClick={() => handleAddToCart()} className='btn bg-main text-white w-100'>+ Add</button>
 
 
       </div>

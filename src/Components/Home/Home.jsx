@@ -12,7 +12,7 @@ export default function Home() {
     <>
            <Helmet>
                 <meta charSet="utf-8" />
-                <title>Home</title>
+                <title>Fresh Cart</title>
                 
             </Helmet>
 
